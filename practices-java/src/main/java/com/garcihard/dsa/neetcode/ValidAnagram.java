@@ -94,5 +94,4 @@ public class ValidAnagram {
         return charCountMap.values().stream().allMatch(count -> count == 0);
     }
 
-    public boolean isAnagramUsingFun
 }

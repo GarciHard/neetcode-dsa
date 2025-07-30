@@ -14,5 +14,14 @@ public class FixedSizeSlideWindowTest {
 
         assertEquals(res, FixedSizeSlideWindow.subArraySum(arr, k));
     }
+
+    @Test
+    public void slidingWindowTest() {
+        int[] arr = {1,2,3,7,4,1};
+        int k = 4;
+        int res = 16;
+
+        assertEquals(res, FixedSizeSlideWindow.slidingWindow(arr, k));
+    }
     
 }

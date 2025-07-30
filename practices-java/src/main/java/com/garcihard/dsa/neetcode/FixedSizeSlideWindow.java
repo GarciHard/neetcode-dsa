@@ -34,5 +34,39 @@ public class FixedSizeSlideWindow {
 
         return list.stream().max(Integer::compareTo).get();
     }
+
+    /* The theory mentioned that the 1st step is to summarize the
+     * initial given range of the window.
+     */
+    public static int slidingWindow(int[] nums, int k) {
+
+        /*
+         * Initial given values:
+         * nums = [1,2,3,7,4,1]
+         * k = 3 
+        */
+        int maxSum = 0;
+        for (int i = 0; i < k; i++) {
+            maxSum += nums[i];
+        }
+        // The expected value will be: 6, for the 1st sublist summize.
+        // [1][2][3] -> 6
+        int windowSum = maxSum;
+        /* 
+         * Then we need to iterate by adding a new number to the rigth
+         * and removing one on the left..
+        */
+        for (int r = k; r < nums.length; r++) {
+            int l = r - k;
+            windowSum += nums[r];
+            windowSum -= nums[l];
+            maxSum = Math.max(windowSum, maxSum);
+
+            // We can simplify the expression like:
+            // windowSum += nums[r] - nums[r - k];
+        }
+
+        return maxSum;
+    }
     
 }
